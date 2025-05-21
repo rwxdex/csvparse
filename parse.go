@@ -28,12 +28,3 @@ func readCSVFile(filePath string) (string, error) {
 
 	return strings.Join(data, "|"), nil
 }
-
-func main() {
-	record, err := readCSVFile("path_to_your_file.csv")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println(record)
-}
