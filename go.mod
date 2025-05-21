@@ -1,3 +1,3 @@
 module csvparse
 
-go 1.23.9
+go 1.23.0
