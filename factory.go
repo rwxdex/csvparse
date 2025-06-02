@@ -16,10 +16,10 @@ const (
 
 // NewFactory создает фабрику для процессора
 func NewFactory() component.ProcessorFactory {
-	return processorhelper.NewProcessorFactory(
+	return processor.NewProcessorFactory(
 		TypeStr,
 		createDefaultConfig,
-		processorhelper.WithTracesProcessor(createTracesProcessor))
+		processor.WithTracesProcessor(createTracesProcessor))
 }
 
 func createDefaultConfig() component.Config {
@@ -33,6 +33,6 @@ func createTracesProcessor(
 	params processorhelper.ProcessorCreateParams,
 	cfg component.Config,
 	nextConsumer consumer.Traces,
-) (processorhelper.TracesProcessor, error) {
+) (processor.TracesProcessor, error) {
 	return CreateTracesProcessor(ctx, params, cfg, nextConsumer)
 }
