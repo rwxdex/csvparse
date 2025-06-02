@@ -150,10 +150,10 @@ func (p *Processor) enrichSpan(attributes pcommon.Map) {
 // CreateTracesProcessor создает процессор трассировки
 func CreateTracesProcessor(
 	ctx context.Context,
-	set component.ProcessorCreateSettings,
+	set processorhelper.ProcessorCreateSettings,
 	cfg component.Config,
-	nextConsumer component.TracesConsumer,
-) (component.TracesProcessor, error) {
+	nextConsumer processorhelper.TracesConsumer,
+) (processorhelper.TracesProcessor, error) {
 	pCfg := cfg.(*Config)
 	processor, err := NewProcessor(set.Logger, pCfg)
 	if err != nil {

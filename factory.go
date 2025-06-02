@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"go.opentelemetry.io/collector/component"
-	"go.opentelemetry.io/collector/config"
+	// "go.opentelemetry.io/collector/config"
 	"go.opentelemetry.io/collector/consumer"
 	"go.opentelemetry.io/collector/processor/processorhelper"
 )
@@ -16,10 +16,10 @@ const (
 
 // NewFactory создает фабрику для процессора
 func NewFactory() component.ProcessorFactory {
-	return component.NewProcessorFactory(
+	return processorhelper.NewProcessorFactory(
 		TypeStr,
 		createDefaultConfig,
-		component.WithTracesProcessor(createTracesProcessor))
+		processorhelper.WithTracesProcessor(createTracesProcessor))
 }
 
 func createDefaultConfig() component.Config {
@@ -30,9 +30,9 @@ func createDefaultConfig() component.Config {
 
 func createTracesProcessor(
 	ctx context.Context,
-	params component.ProcessorCreateParams,
+	params processorhelper.ProcessorCreateParams,
 	cfg component.Config,
 	nextConsumer consumer.Traces,
-) (component.TracesProcessor, error) {
+) (processorhelper.TracesProcessor, error) {
 	return CreateTracesProcessor(ctx, params, cfg, nextConsumer)
 }
